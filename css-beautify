@@ -1,0 +1,3 @@
+#!/bin/sh
+
+python3 /usr/share/css-beautify/css-beautify "$@"
