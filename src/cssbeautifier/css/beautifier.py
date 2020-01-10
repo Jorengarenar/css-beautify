@@ -2,10 +2,11 @@ from __future__ import print_function
 import sys
 import re
 import copy
+import math
 from .options import BeautifierOptions
-from jsbeautifier.core.output import Output
-from jsbeautifier.core.inputscanner import InputScanner
-from jsbeautifier.core.directives import Directives
+from .output import Output
+from .inputscanner import InputScanner
+from .directives import Directives
 
 # This is not pretty, but given how we did the version import
 # it is the only way to do this without having setup.py fail on a missing
