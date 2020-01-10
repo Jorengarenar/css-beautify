@@ -61,8 +61,6 @@ def usage(stream=sys.stdout):
 
     print("css-beautify " + __version__ + """
 
-CSS beautifier (https://beautifier.io/)
-
 Usage: css-beautify [options] <infile>
 
     <infile> can be "-", which means stdin.
