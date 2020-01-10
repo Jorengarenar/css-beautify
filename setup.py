@@ -3,7 +3,7 @@
 from setuptools import setup
 from cssbeautifier.__version__ import __version__
 
-setup(name='cssbeautifier',
+setup(name='css-beautify',
         version=__version__,
         description='CSS unobfuscator and beautifier',
         author='Jorengarenar',

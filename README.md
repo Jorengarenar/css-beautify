@@ -4,7 +4,7 @@
 
 * Using `pip`
 ```sh
-$ pip install cssbeautifier
+$ pip install css-beautify
 ```
 
 * Using AUR
