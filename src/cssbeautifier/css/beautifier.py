@@ -6,38 +6,11 @@ from .options import BeautifierOptions
 from jsbeautifier.core.output import Output
 from jsbeautifier.core.inputscanner import InputScanner
 from jsbeautifier.core.directives import Directives
-from jsbeautifier.__version__ import __version__
 
 # This is not pretty, but given how we did the version import
 # it is the only way to do this without having setup.py fail on a missing
 # six dependency.
 six = __import__("six")
-
-#
-# The MIT License (MIT)
-
-# Copyright (c) 2007-2018 Einar Lielmanis, Liam Newman, and contributors.
-
-# Permission is hereby granted, free of charge, to any person
-# obtaining a copy of this software and associated documentation files
-# (the "Software"), to deal in the Software without restriction,
-# including without limitation the rights to use, copy, modify, merge,
-# publish, distribute, sublicense, and/or sell copies of the Software,
-# and to permit persons to whom the Software is furnished to do so,
-# subject to the following conditions:
-
-# The above copyright notice and this permission notice shall be
-# included in all copies or substantial portions of the Software.
-
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
-# BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
-# ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-# CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 
 directives_core = Directives(r'/\*', r'\*/')
 
@@ -64,20 +37,6 @@ def beautify_file(file_name, opts=default_options()):
     content = ''.join(stream.readlines())
     b = Beautifier(content, opts)
     return b.beautify()
-
-
-def usage(stream=sys.stdout):
-
-    print("css-beautify " + __version__ + """
-
-CSS beautifier (https://beautifier.io/)
-
-""", file=stream)
-    if stream == sys.stderr:
-        return 1
-    else:
-        return 0
-
 
 
 class Beautifier:
@@ -404,7 +363,7 @@ class Beautifier:
                     # line. Block comments are also affected, but
                     # a new line is always output before one inside
                     # that section
-                    if self._input.peek() is not '/':
+                    if self._input.peek() != '/':
                         self._output.add_new_line()
                 else:
                     self.print_string(self._ch)

@@ -30,15 +30,34 @@ import io
 import re
 import copy
 import getopt
-from jsbeautifier.__version__ import __version__
-from jsbeautifier import isFileDifferent, mkdir_p
 from cssbeautifier.css.options import BeautifierOptions
 from cssbeautifier.css.beautifier import Beautifier
 
+__version__ = '1.10.1'
 
 def default_options():
     return BeautifierOptions()
 
+def isFileDifferent(filepath, expected):
+    try:
+        return (
+            ''.join(
+                io.open(
+                    filepath,
+                    'rt',
+                    newline='').readlines()) != expected)
+    except BaseException:
+        return True
+
+def mkdir_p(path):
+    try:
+        if path:
+            os.makedirs(path)
+    except OSError as exc:  # Python >2.5
+        if exc.errno == errno.EEXIST and os.path.isdir(path):
+            pass
+        else:
+            raise Exception()
 
 def beautify(string, opts=default_options()):
     b = Beautifier(string, opts)
