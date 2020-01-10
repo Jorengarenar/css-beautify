@@ -5,10 +5,9 @@ import io
 import re
 import copy
 import getopt
-from cssbeautifier.css.options import BeautifierOptions
-from cssbeautifier.css.beautifier import Beautifier
-
-__version__ = '1.10.1'
+from .options import BeautifierOptions
+from .beautifier import Beautifier
+from .__version__ import __version__
 
 def default_options():
     return BeautifierOptions()
