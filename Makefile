@@ -1,15 +1,14 @@
 PREFIX=/usr
 BINDIR=$(PREFIX)/bin
-DEPENDDIR=$(PREFIX)/share
+LIBDIR=$(PREFIX)/lib/python3.8
 PROGNAME=css-beautify
+MODULENAME=cssbeautifier
 SRC=src
 
 install:
-	mkdir -p $(DEPENDDIR)/$(PROGNAME)
-	cp -r $(SRC)/* $(DEPENDDIR)/$(PROGNAME)
-	chmod +x $(DEPENDDIR)/$(PROGNAME)/$(PROGNAME)
-	ln -sf $(DEPENDDIR)/$(PROGNAME)/$(PROGNAME) $(BINDIR)/$(PROGNAME)
+	cp -r $(SRC)/$(MODULENAME) $(LIBDIR)/$(MODULENAME)
+	install -Dm755 $(SRC)/$(PROGNAME) $(BINDIR)
 
 uninstall:
-	rm -rf $(DEPENDDIR)/$(PROGNAME)
+	rm -rf $(LIBDIR)/$(MODULENAME)
 	rm -f $(BINDIR)/$(PROGNAME)
