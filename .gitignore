@@ -1,4 +1,5 @@
 *.pyc
 build
-dist
 css-beautify.egg-info
+cssbeautifier/__pycache__
+dist
